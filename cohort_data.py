@@ -75,6 +75,7 @@ def sort_by_cohort(filename):
     >>> sort_by_cohort("cohort_data.txt")
     [['Harry Potter', 'Mandy Brocklehurst', 'Ron Weasley', 'Oliver Wood', 'Colin Creevey', 'Cho Chang', 'Michael Corner', 'Draco Malfoy', 'Seamus Finnigan', 'Eddie Carmichael', 'Theodore Nott', 'Terence Higgs', 'Hermione Granger', 'Penelope Clearwater', 'Angelina Johnson', 'Dennis Creevey'], ['Neville Longbottom', 'Cedric Diggory', 'Pansy Parkinson', 'Anthony Goldstein', 'Padma Patil', 'Luna Lovegood', 'Eleanor Branstone', 'Lee Jordan', 'Marietta Edgecombe', 'Andrew Kirke', 'Ginny Weasley', 'Mary Macdonald', 'Blaise Zabini', 'Natalie McDonald', 'Adrian Pucey', 'Hannah Abbott', 'Graham Pritchard', 'Susan Bones', 'Roger Davies', 'Owen Cauldwell'], ['Laura Madley', 'Orla Quirke', 'Parvati Patil', 'Eloise Midgeon', 'Zacharias Smith', 'Cormac McLaggen', 'Lisa Turpin', 'Demelza Robins', 'Ernie Macmillan', 'Millicent Bullstrode', 'Percy Weasley', 'Jimmy Peakes', 'Justin Finch-Fletchley', 'Miles Bletchley', 'Malcolm Baddock'], ['Marcus Belby', 'Euan Abercrombie', 'Vincent Crabbe', 'Ritchie Coote', 'Katie Bell', 'Terry Boot', 'Lavender Brown', 'Gregory Goyle', 'Marcus Flint', 'Dean Thomas', 'Jack Sloper', 'Rose Zeller', 'Stewart Ackerley', 'Fred Weasley', 'George Weasley', 'Romilda Vane', 'Alicia Spinnet', 'Kevin Whitby'], ['Friendly Friar', 'Grey Lady', 'Nearly Headless Nick', 'Bloody Baron']]
     """
+    hog_persons = process_file(filename)
 
     all_students = []
     winter_16 = []
@@ -83,7 +84,28 @@ def sort_by_cohort(filename):
     fall_15 = []
     ghosts = []
 
-    # Code goes here
+    for person in hog_persons:
+
+        name = person[0] + ' ' + person[1]
+
+        # print("@@@@@@",person)
+        if person[4] == "Winter 2016":
+            winter_16.append(name)
+        elif person[4] == "Spring 2016":
+            spring_16.append(name)
+        elif person[4] == "Summer 2016":
+            summer_16.append(name)
+        elif person[4] == "Fall 2015":
+            fall_15.append(name)
+        elif person[4] == "G":
+            ghosts.append(name)  
+
+    all_students.append(fall_15)
+    all_students.append(winter_16)
+    all_students.append(spring_16)
+    all_students.append(summer_16)
+   
+    all_students.append(ghosts)
 
     return all_students
 

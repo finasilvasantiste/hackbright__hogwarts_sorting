@@ -124,6 +124,8 @@ def hogwarts_by_house(filename):
 
     """
 
+    hog_persons = process_file(filename)
+
     all_hogwarts = []
     dumbledores_army = []
     gryffindor = []
@@ -133,7 +135,41 @@ def hogwarts_by_house(filename):
     ghosts = []
     instructors = []
 
-    # Code goes here
+    for person in hog_persons:
+
+        name = person[1]
+
+        if person[2] == "Dumbledore's Army":
+            dumbledores_army.append(name)
+        elif person[2] == "Gryffindor":
+            gryffindor.append(name)
+        elif person[2] == "Hufflepuff":
+            hufflepuff.append(name)
+        elif person[2] == "Ravenclaw":
+            ravenclaw.append(name)
+        elif person[2] == "Slytherin":
+            slytherin.append(name)
+        elif person[4] == "G":
+            ghosts.append(name)  
+        elif person[4] == "I":
+            instructors.append(name)
+
+    dumbledores_army.sort()
+    gryffindor.sort()
+    hufflepuff.sort()
+    ravenclaw.sort()
+    slytherin.sort()
+    ghosts.sort()
+    instructors.sort()
+    
+    all_hogwarts.append(dumbledores_army)
+    all_hogwarts.append(gryffindor)
+    all_hogwarts.append(hufflepuff)
+    all_hogwarts.append(ravenclaw)
+    all_hogwarts.append(slytherin)
+    all_hogwarts.append(ghosts)
+    all_hogwarts.append(instructors)
+
 
     return all_hogwarts
 
